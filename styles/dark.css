@@ -1,0 +1,11 @@
+body.dark-mode { background:#1E1E2F; color:#EEE; transition: background 0.4s ease, color 0.4s ease; }
+
+body.dark-mode header, body.dark-mode nav ul { background:#2A2A3C; }
+body.dark-mode .card, body.dark-mode .task, body.dark-mode .add-task input, body.dark-mode .add-task select {
+    background:#2A2A3C; color:#EEE; border-color:#555;
+}
+body.dark-mode .add-task button { background:#50E3C2; color:#1E1E2F; }
+body.dark-mode .add-task button:hover { background:#40C9AA; }
+body.dark-mode .category { border-color:#50E3C2; color:#50E3C2; background:#2A2A3C; }
+body.dark-mode .category.active, body.dark-mode .category:hover { background:#50E3C2; color:#1E1E2F; }
+body.dark-mode .task.completed { opacity:0.5; }

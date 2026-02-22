@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks</title>
+<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/dark.css">
+</head>
+<body>
+<header>
+    <button id="hamburger" class="hamburger">☰</button>
+    <h1>My To-Do Dashboard</h1>
+    <button id="toggle-dark" class="dark-btn">🌙</button>
+</header>
+
+<nav id="sidebar" class="sidebar">
+    <ul>
+        <li><a href="index.html" class="active">Dashboard</a></li>
+        <li><a href="tasks.html">Tasks</a></li>
+    </ul>
+</nav>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="tasks.html" class="active">Tasks</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="categories">
+        <button data-cat="all" class="category active">All</button>
+        <button data-cat="work" class="category">Work</button>
+        <button data-cat="personal" class="category">Personal</button>
+        <button data-cat="shopping" class="category">Shopping</button>
+    </section>
+
+    <section class="task-list" id="task-list"></section>
+</main>
+
+<script src="scripts/app.js"></script>
+</body>
+</html>

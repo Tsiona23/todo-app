@@ -1,0 +1,88 @@
+/* Reset */
+* { box-sizing:border-box; margin:0; padding:0; font-family:'Segoe UI',sans-serif; }
+body { background:#F5F7FA; color:#333; transition: background 0.4s ease, color 0.4s ease; }
+
+/* Header & Nav */
+header { display:flex; justify-content:space-between; align-items:center; padding:1rem; background:#c69fd5; color:white; border-radius:0 0 15px 15px; }
+nav ul { display:flex; list-style:none; gap:1rem; padding:0.5rem 1rem; background:#f1bee3; border-radius:15px; flex-wrap:wrap; }
+nav a { color:white; text-decoration:none; font-weight:bold; transition:0.3s; }
+nav a.active, nav a:hover { text-decoration:underline; }
+
+/* Main */
+main { padding:1rem; }
+
+/* Summary Cards */
+.summary-cards { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+.card { flex:1; min-width:120px; background:white; padding:1rem; border-radius:15px; box-shadow:0 6px 12px rgba(0,0,0,0.1); text-align:center; transition:all 0.3s; cursor:pointer; }
+.card:hover { transform:scale(1.05); }
+
+/* Chart Section */
+.chart-section { max-width:600px; margin:1rem auto; background:white; padding:1rem 1.5rem; border-radius:15px; box-shadow:0 6px 12px rgba(0,0,0,0.1); }
+
+/* Add Task */
+.add-task { display:flex; flex-wrap:wrap; gap:0.5rem; margin:1rem 0; }
+.add-task input, .add-task select, .add-task button { padding:0.7rem; border-radius:10px; border:1px solid #ccc; transition:0.3s; flex:1 1 100px; }
+.add-task button { background:#c69fd5; color:white; border:none; cursor:pointer; }
+.add-task button:hover { background:#a87fb8; }
+
+/* Task List */
+.task-list { display:flex; flex-direction:column; gap:0.5rem; }
+.task { display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1rem; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); background:white; transform:translateX(-100%); animation:slideIn 0.4s forwards; }
+.task.completed { opacity:0.6; text-decoration:line-through; }
+
+/* Category Buttons */
+.category { padding:0.5rem 1rem; border-radius:10px; border:1px solid #c69fd5;; cursor:pointer; background:white; color:#4A90E2; margin-right:0.5rem; transition:0.3s; }
+.category.active, .category:hover { background:#c69fd5;; color:white; }
+
+/* Dark Mode Button */
+.dark-btn { background:transparent; border:none; font-size:1.5rem; cursor:pointer; transition: transform 0.3s; }
+.dark-btn:hover { transform:scale(1.2); }
+
+/* Animations */
+@keyframes slideIn { from {transform:translateX(-100%); opacity:0;} to {transform:translateX(0); opacity:1;} }
+
+/* Responsive */
+@media (max-width:768px){
+    .summary-cards { flex-direction:column; }
+    .add-task { flex-direction:column; }
+    .chart-section { width:100%; padding:1rem; }
+}
+/* Hamburger Button */
+.hamburger {
+    font-size: 1.8rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    display: none; /* hidden on large screens */
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 220px;
+    background: #4A90E2;
+    padding-top: 3rem;
+    transform: translateX(-250px); /* hidden initially */
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+.sidebar ul { list-style: none; padding: 0; }
+.sidebar ul li { margin: 1rem 0; }
+.sidebar ul li a { color: white; text-decoration: none; padding: 0.5rem 1rem; display: block; transition: 0.3s; }
+.sidebar ul li a.active, .sidebar ul li a:hover { background: #3A78C2; border-radius: 8px; }
+
+/* When sidebar is open */
+.sidebar.open { transform: translateX(0); }
+
+/* Adjust main content when sidebar opens on large screens */
+main.shifted { margin-left: 220px; transition: margin 0.3s ease; }
+
+/* Responsive */
+@media(max-width: 768px) {
+    .hamburger { display: block; }
+    main.shifted { margin-left: 0; }
+}
