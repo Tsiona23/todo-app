@@ -57,4 +57,4 @@ User authentication & cloud sync
 
 This project is licensed under the MIT License.
 
-Made with ❤️ by Tsion Haile
+Made  by Tsion Hailekiros
