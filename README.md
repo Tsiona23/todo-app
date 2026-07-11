@@ -79,7 +79,7 @@
 ### Add Task
 
 <p align="center">
-  <img src="screenshots/add-task.png" width="45%" alt="Add Task">
+  <img src="screenshots/add task.png" width="45%" alt="Add Task">
 </p>
 ---
 
