@@ -89,7 +89,7 @@ This project requires no build steps or dependencies. You can run it directly in
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-github-username/todoo.git
+   git clone https://github.com/Tsiona23/todo-app.git
    ```
 2. Navigate to the project directory:
    ```bash
