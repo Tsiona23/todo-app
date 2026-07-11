@@ -64,24 +64,23 @@
 
 ## 📸 Screenshots
 
-**Dashboard - Light Mode**
-!Dashboard Light
+### Dashboard - Light Mode
 
 <p align="center">
-  <img src="screenshots/dasboard light.png"width="45%">
-</p>
-**All Tasks - Dark Mode**
-!Tasks Dark
-<p align="center">
-  <img src="screenshots/dashboard dark.png"width="45%">
+  <img src="screenshots/dashboard-light.png" width="45%" alt="Dashboard Light">
 </p>
 
-**add tasks **
+### Dashboard - Dark Mode
 
 <p align="center">
-  <img src="screenshots/add task.png"width="45%">
+  <img src="screenshots/dashboard-dark.png" width="45%" alt="Dashboard Dark">
 </p>
 
+### Add Task
+
+<p align="center">
+  <img src="screenshots/add-task.png" width="45%" alt="Add Task">
+</p>
 ---
 
 ## 🚀 Installation / Usage
