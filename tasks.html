@@ -1,44 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tasks</title>
-<link rel="stylesheet" href="styles/style.css">
-<link rel="stylesheet" href="styles/dark.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToDoo · All Tasks</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
-<body>
-<header>
-    <button id="hamburger" class="hamburger">☰</button>
-    <h1>My To-Do Dashboard</h1>
-    <button id="toggle-dark" class="dark-btn">🌙</button>
-</header>
-
-<nav id="sidebar" class="sidebar">
-    <ul>
-        <li><a href="index.html" class="active">Dashboard</a></li>
-        <li><a href="tasks.html">Tasks</a></li>
-    </ul>
-</nav>
-
-<nav>
-    <ul>
-        <li><a href="index.html">Dashboard</a></li>
-        <li><a href="tasks.html" class="active">Tasks</a></li>
-    </ul>
-</nav>
-
-<main>
-    <section class="categories">
-        <button data-cat="all" class="category active">All</button>
-        <button data-cat="work" class="category">Work</button>
-        <button data-cat="personal" class="category">Personal</button>
-        <button data-cat="shopping" class="category">Shopping</button>
-    </section>
-
-    <section class="task-list" id="task-list"></section>
-</main>
-
-<script src="scripts/app.js"></script>
+<body> 
+  <div class="app-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand"><i class="fas fa-pen brand-icon"></i><span>ToDoo</span></div> 
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-link"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+        <a href="tasks.html" class="nav-link active"><i class="fas fa-list-check"></i> <span>All Tasks</span></a>
+        <a href="tasks.html?filter=completed" class="nav-link"><i class="fas fa-check-circle"></i> <span>Completed</span></a>
+        <a href="tasks.html?filter=important" class="nav-link"><i class="fas fa-star"></i> <span>Important</span></a>
+        <a href="#" class="nav-link" id="settingsLink"><i class="fas fa-cog"></i> <span>Settings</span></a>
+      </nav>
+    </aside>
+ 
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+          <h1 class="page-title">All Tasks</h1>
+        </div>
+        <div class="header-right">
+          <div class="search-bar"><i class="fas fa-search"></i><input type="text" id="taskSearch" placeholder="Search tasks..." /></div> 
+          <button class="icon-btn" id="themeToggleHeader" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+          <button class="btn-primary add-task-btn" id="addTaskBtn"><i class="fas fa-plus"></i> Add Task</button>
+        </div>
+      </header>
+ 
+      <section class="tasks-page">
+        <!-- filters -->
+        <div class="filter-bar">
+          <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all"><i class="fas fa-infinity"></i> All</button>
+            <button class="filter-btn" data-filter="today"><i class="fas fa-calendar-day"></i> Today</button>
+            <button class="filter-btn" data-filter="upcoming"><i class="fas fa-calendar-week"></i> Upcoming</button>
+            <button class="filter-btn" data-filter="important"><i class="fas fa-star"></i> Important</button>
+            <button class="filter-btn" data-filter="completed"><i class="fas fa-check-circle"></i> Completed</button>
+          </div>
+          <div class="filter-sort">
+            <select id="sortSelect" aria-label="Sort tasks by">
+              <option value="newest">Sort: Newest</option>
+              <option value="oldest">Sort: Oldest</option>
+              <option value="priority">Sort: Priority</option>
+              <option value="dueDate">Sort: Due Date</option>
+            </select>
+            <select id="categoryFilter" aria-label="Filter tasks by category">
+              <option value="all">All Categories</option>
+              <option value="Work">Work</option>
+              <option value="Personal">Personal</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Study">Study</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+ 
+        <!-- task list -->
+        <div id="taskListContainer" class="task-list"></div>
+        <div id="emptyState" class="empty-state">
+          <i class="fas fa-inbox"></i>
+          <h3>No tasks yet</h3>
+          <p>Create your first task and start being productive</p>
+          <button class="btn-primary" id="emptyAddBtn"><i class="fas fa-plus"></i> Create Task</button>
+        </div>
+      </section>
+    </main>
+  </div>
+ 
+  <!-- Modal -->
+  <div class="modal-overlay" id="taskModal">
+    <div class="modal">
+      <div class="modal-header"><h3 id="modalTitle">Add Task</h3><button class="close-modal" id="closeModalBtn" aria-label="Close modal"><i class="fas fa-times"></i></button></div> 
+      <div class="modal-body">
+        <form id="taskForm">
+          <input type="hidden" id="taskEditId" />
+          <div class="form-group"><label for="taskTitle">Title *</label><input type="text" id="taskTitle" placeholder="Write a task..." required /></div> 
+          <div class="form-group"><label for="taskDesc">Description</label><textarea id="taskDesc" rows="2" placeholder="Add details..."></textarea></div> 
+          <div class="form-row">
+            <div class="form-group"><label for="taskCategory">Category</label><select id="taskCategory"><option value="Work">Work</option><option value="Personal">Personal</option><option value="Shopping">Shopping</option><option value="Study">Study</option><option value="Other">Other</option></select></div> 
+            <div class="form-group"><label for="taskPriority">Priority</label><select id="taskPriority"><option value="Low">Low</option><option value="Medium" selected>Medium</option><option value="High">High</option></select></div> 
+          </div>
+          <div class="form-group"><label for="taskDueDate">Due Date</label><input type="date" id="taskDueDate" /></div> 
+          <div class="form-actions"><button type="button" id="cancelModalBtn" class="btn-secondary">Cancel</button><button type="submit" class="btn-primary" id="saveTaskBtn"><i class="fas fa-plus"></i> Add Task</button></div> 
+        </form>
+      </div>
+    </div>
+  </div>
+ 
+  <div id="toastContainer"></div>
+  <script src="scripts/app.js"></script>
 </body>
 </html>
