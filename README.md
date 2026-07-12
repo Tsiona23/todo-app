@@ -1,6 +1,6 @@
 # ToDoo ⚡
 
-**ToDoo** is a modern, portfolio-level productivity application built with pure HTML, CSS, and Vanilla JavaScript. It transforms a basic to-do list into a professional, SaaS-like dashboard inspired by premium tools like Notion, Todoist, and Linear.
+**ToDoo** is a modern, productivity application built with pure HTML, CSS, and Vanilla JavaScript. It transforms a basic to-do list into a professional, SaaS-like dashboard inspired by premium tools like Notion, Todoist, and Linear.
 
 ---
 
